@@ -1,0 +1,7 @@
+.hero-section {
+  background-image: url('./img/jumbotron.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
