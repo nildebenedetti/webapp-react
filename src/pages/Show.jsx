@@ -5,16 +5,26 @@ import { useContext } from 'react';
 
 function Show() {
     const { items, loading, error } = useContext(DataContext)
-    
+
     if (loading) return <p>Pagina in caricamento...</p>
-    if (error) return <Navigate to='/NotFound'/>
+    if (error) return <Navigate to='/NotFound' />
 
     return (
 
         <>
             <div className='hero-products'>
                 <div className='container my-3' >
-                    <div className="row">
+
+                    <div className='selectcategories d-flex justify-content-center gap-2 flex-wrap'>
+                        <button className='btn btn-warning rounded-pill fw-bold border-dark border-3'>Tutti</button>
+                        <button className='btn btn-warning rounded-pill fw-bold border-dark border-3'>Coni</button>
+                        <button className='btn btn-warning rounded-pill fw-bold border-dark border-3'>Coppette</button>
+                        <button className='btn btn-warning rounded-pill fw-bold border-dark border-3'>Granite</button>
+                        <button className='btn btn-warning rounded-pill fw-bold border-dark border-3'>Gusti Speciali</button>
+                        <button className='btn-le btn btn-warning rounded-pill fw-bold border-3'>Limited Edition</button>
+                    </div>
+
+                    <div className="row d-flex justify-content-center flex-wrap">
                         {items.map(item => (
                             <div className="card m-3" style={{ width: "18rem" }} key={item.id}>
                                 <img src={item.image_url} className="card-img-top" alt={item.title} />
