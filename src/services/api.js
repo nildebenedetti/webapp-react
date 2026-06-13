@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3003';
+const API_BASE_URL = 'http://localhost:3000';
 
 const api = {
     // Categorie
@@ -36,16 +36,19 @@ const api = {
         return data.results;
     },
 
-    async getReviewsByProductId(productId) {
-        const response = await fetch(`${API_BASE_URL}/reviews/${productId}`);
-        const data = await response.json();
-
-        if (data.error) {
-            throw new Error(data.error);
-        }
-
-        return data.results;
-    },
+async getReviewsByProductId(productId) {
+    const response = await fetch(`${API_BASE_URL}/reviews/${productId}`);
+    if (!response.ok) {
+        throw new Error(
+            `Errore HTTP ${response.status} nel recupero delle recensioni`
+        );
+    }
+    const data = await response.json();
+    if (data.error) {
+        throw new Error(data.error);
+    }
+    return data.results;
+},
 
     async getReviewById(id) {
         const response = await fetch(`${API_BASE_URL}/reviews/${id}`);
