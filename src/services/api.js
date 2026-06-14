@@ -24,6 +24,13 @@ const api = {
         return data.results;
     },
 
+    async searchProducts(searchString) {
+        const response = await fetch(`${API_BASE_URL}/products?search=${encodeURIComponent(searchString)}`);
+        const data = await response.json();
+        if (data.error) throw new Error(data.error);
+        return data.results;
+    },
+
     // Recensioni
     async getReviews(productId = null) {
         let url = `${API_BASE_URL}/reviews`;

@@ -14,6 +14,7 @@ function DataProvider({ children }) {
     const [items, setItems] = useState([]);     // qui finiranno i dati per le card
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [initialLoad, setInitialLoad] = useState(true);
 
 
     const fetchItems = async (categoryId = null) => {
@@ -37,8 +38,9 @@ function DataProvider({ children }) {
         } catch (error) {
             setError(error.message);
         } finally {
-            setLoading(false);
-        }
+        setLoading(false);
+        setInitialLoad(false);
+    }
     };
 
     useEffect(() => {
@@ -87,6 +89,7 @@ function DataProvider({ children }) {
         const value = {
             items,
             loading,
+            initialLoad,
             error,
             fetchItems,
             createItem,
