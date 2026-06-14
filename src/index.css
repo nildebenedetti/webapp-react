@@ -115,7 +115,10 @@ footer {
 
 /*card*/
 .card {
-  background-color: hsla(43, 90%, 55%, 0.967);
+  background-image: url('./img/review.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.8);
   transition: transform 0.4s ease-in-out;
   padding: 0;
