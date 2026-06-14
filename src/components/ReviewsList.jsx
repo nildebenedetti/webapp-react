@@ -89,7 +89,7 @@ function ReviewsList({ productId }) {
     }
     return (
         <section className="mt-5 pb-4">
-            <h2 className="text-light mb-4">
+            <h2 className="text-light mb-4 fw-bold">
                 Recensioni clienti
             </h2>
             {reviews.length === 0 ? (
@@ -98,10 +98,10 @@ function ReviewsList({ productId }) {
                 </p>
             ) : (
                 <>
-                    <div className="card mb-4">
+                    <div className="card main-card mb-4">
                         <div className="card-body">
                             <div className="d-flex align-items-center gap-3 mb-2">
-                                <span className="fs-4 text-warning">
+                                <span className="fs-4 rating-star">
                                     {"★".repeat(
                                         Math.round(averageRating)
                                     )}
@@ -150,7 +150,7 @@ function ReviewsList({ productId }) {
                                             aria-valuemax="100"
                                         >
                                             <div
-                                                className="progress-bar bg-warning"
+                                                className="progress-bar rating-bar"
                                                 style={{
                                                     width: `${item.percentage}%`
                                                 }}
@@ -167,7 +167,7 @@ function ReviewsList({ productId }) {
                             {ratingFilter !== null && (
                                 <button
                                     type="button"
-                                    className="btn btn-dark mt-2"
+                                    className="btn btn-dark mt-2 fw-bold"
                                     onClick={resetRatingFilter}
                                 >
                                     Mostra tutte le recensioni
@@ -175,7 +175,7 @@ function ReviewsList({ productId }) {
                             )}
                         </div>
                     </div>
-                    <h3 className="text-light mb-3">
+                    <h3 className="text-light mb-3 fw-bold">
                         {ratingFilter === null
                             ? "Tutte le recensioni"
                             : `Recensioni da ${ratingFilter} ${ratingFilter === 1
@@ -190,14 +190,14 @@ function ReviewsList({ productId }) {
                     ) : (
                         visibleReviews.map(review => (
                             <div
-                                className="card mb-3"
+                                className="card review-card mb-3"
                                 key={review.id}
                             >
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         {review.title}
                                     </h5>
-                                    <p className="text-warning">
+                                    <p className="rating-star">
                                         {"★".repeat(
                                             Number(
                                                 review.start_rating

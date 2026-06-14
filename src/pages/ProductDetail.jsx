@@ -19,9 +19,11 @@ function ProductDetail() {
         <>
             <div className='hero-detail'>
                 <div className="container my-4">
-                    <Link to="/Show" className="linkbtn btn btn-warning mb-4">
-                        ← Torna ai prodotti
-                    </Link>
+                    <div className="d-flex justify-content-end mb-4">
+                        <Link to="/Show" className="linkbtn btn btn-warning">
+                            ← Torna ai prodotti
+                        </Link>
+                    </div>
 
                     <div className="row">
                         {/* Colonna immagine */}

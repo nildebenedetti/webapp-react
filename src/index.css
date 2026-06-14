@@ -161,3 +161,26 @@ footer {
   transform: scale(1.04);
 }
 /**/
+
+/*product detail*/
+.rating-star{
+  color: #ec307d;
+}
+
+.rating-bar{
+  background-color: #ec307d;
+}
+
+.main-card {
+  background-image: url('./img/review.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.review-card {
+  background-image: url('./img/review.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
