@@ -116,6 +116,18 @@ footer {
   overflow: hidden;
 }
 
+/*WhoWeAre*/
+
+.hero-wwa {
+  background-image: url('./img/jumbotronWWA.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 /*card*/
 .card {
   background-image: url('./img/review.png');

@@ -11,6 +11,7 @@ import Show from './pages/Show';
 import Structure from './layouts/Structure';
 import ProductDetail from './pages/ProductDetail';
 import NotFound from './pages/NotFound';
+import WhoWeAre from './pages/WhoWeAre';
 import { DataProvider } from './context/DataContext';
 
 
@@ -25,6 +26,7 @@ function App() {
               <Route index element={<Navigate to='/Homepage' replace />} />
               <Route path='/Homepage' element={<Homepage />} />
               <Route path='/Show' element={<Show />} />
+              <Route path='/WhoWeAre' element={<WhoWeAre />} />
               <Route path='/ProductDetail/:id' element={<ProductDetail />} />
               <Route path='/NotFound' element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
