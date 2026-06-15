@@ -27,7 +27,7 @@ function Homepage() {
 
     return (
         <>
-            <div className='hero-section'>
+            <section className="hero-section">
                 <img className='hero-banner' src={heroBanner} alt="iScream banner" />
 
                 <div className="featured-section fade-in-content">
@@ -41,14 +41,13 @@ function Homepage() {
                             <ProductCardHome product={product} key={product.id}/>
                         ))};
                     </div>
-
-                    <div className="text-center mt-4">
+                    <div className="btn-container text-center mt-4">
                         <Link to="/Show" className="btn btn-dark btn-lg">
                             Vai al Menù completo
                         </Link>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 }
