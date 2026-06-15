@@ -16,7 +16,7 @@ function AboutUs() {
                     <h1 className="text-center text-dark mb-5">Chi Siamo</h1>
 
                     {/* Storia della gelateria */}
-                    <div className="card bg-dark text-light border-warning mb-5">
+                    <div className="card bg-dark text-light border-warning mb-5 p-4">
                         <div className="card-body">
                             <h2 className="card-title text-warning mb-3">La Nostra Storia</h2>
                             <h5 className="card-text text-white fs-5">
@@ -39,7 +39,7 @@ function AboutUs() {
                     {/* Foto del locale */}
                     <div className="row mb-5 g-4">
                         <div className="col-md-6">
-                            <div className="card bg-dark border-warning">
+                            <div className="card bg-dark border-warning p-4">
                                 <img
                                     src={store}
                                     className="card-img-top rounded-1"
@@ -54,7 +54,7 @@ function AboutUs() {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <div className="card bg-dark border-warning">
+                            <div className="card bg-dark border-warning p-4">
                                 <img
                                     src={storeout}
                                     className="card-img-top rounded-1"
@@ -71,7 +71,7 @@ function AboutUs() {
                     </div>
 
                     {/* Contatti e indirizzo */}
-                    <div className="card bg-dark text-light border-warning mb-5">
+                    <div className="card bg-dark text-light border-warning mb-5 p-4">
                         <div className="card-body">
                             <h2 className="card-title text-warning mb-4">Contatti</h2>
                             <div className="row">
@@ -123,7 +123,7 @@ function AboutUs() {
                     </div>
 
                     {/* Mappa */}
-                    <div className="card bg-dark border-warning">
+                    <div className="card bg-dark border-warning p-4">
                         <div className="card-body">
                             <h2 className="card-title text-warning mb-3">Vieni a trovarci</h2>
                             <div className="ratio ratio-16x9">

@@ -293,10 +293,12 @@ footer {
 .fade-in-content {
   animation: fadeInUp 0.80s ease-out;
 /*product detail*/
+}
+
 .rating-star{
   color: #ec307d;
 }
-}
+
 
 .rating-bar{
   background-color: #ec307d;

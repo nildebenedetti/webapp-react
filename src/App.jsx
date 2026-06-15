@@ -13,6 +13,7 @@ import ProductDetail from './pages/ProductDetail';
 import NotFound from './pages/NotFound';
 import WhoWeAre from './pages/WhoWeAre';
 import { DataProvider } from './context/DataContext';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <>
       <DataProvider>
         <BrowserRouter>
+        <ScrollToTop/>
           <Routes>
             <Route path='/' element={<Structure />}>
               <Route index element={<Navigate to='/Homepage' replace />} />

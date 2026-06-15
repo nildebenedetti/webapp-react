@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import api from '../services/api';
+import FormAddCard from '../components/FormAddCard'
 
 function Show() {
     const { items, loading, initialLoad, error, fetchItems } = useContext(DataContext)
@@ -15,25 +15,39 @@ function Show() {
         setNewTheme(!newTheme)
     }
 
+    //show modal form
+    const [showModal, setShowModal] = useState(false)
+
     //useState per ricerca
     const [research, setResearch] = useState('')
     const [searchResults, setSearchResults] = useState(null)
+    //useState ricerca per nav
+    const [searchParams] = useSearchParams();
 
-    const handleSearch = () => {
-        console.log('research:', research);
+    //handle searching bar
+    const handleSearch = (term) => {
+        const query = term !== undefined ? term : research;
 
-        if (research.trim() === '') {
+        if (query.trim() === '') {
             setSearchResults(null);
             return;
         }
 
-        api.searchProducts(research)
-            .then(data => {
-                console.log('risultati ricevuti:', data);
-                setSearchResults(data);
-            })
+        api.searchProducts(query)
+            .then(data => setSearchResults(data))
             .catch(err => console.error('errore ricerca:', err));
     }
+
+    //useEffect nav search->product search
+    useEffect(() => {
+        const queryFromUrl = searchParams.get('search');
+        if (queryFromUrl) {
+            setResearch(queryFromUrl);
+            handleSearch(queryFromUrl);
+        }
+    }, [searchParams]);
+
+
 
     const displayedItems = searchResults !== null ? searchResults : items;
 
@@ -50,6 +64,11 @@ function Show() {
         </div>
     );
     if (error) return <Navigate to='/NotFound' />
+
+    //btn form
+    const handleSubmitProduct = (e) => {
+        e.preventDefault();
+    }
 
     return (
 
@@ -80,7 +99,7 @@ function Show() {
                                     style={{ minWidth: '200px' }}
                                     value={research}
                                     onChange={e => setResearch(e.target.value)}
-                                    onKeyDown={e => e.key === 'Enter' && handleSearch}
+                                    onKeyDown={e => e.key === 'Enter' && handleSearch()}
                                 />
                             </div>
                         </div>
@@ -105,8 +124,15 @@ function Show() {
 
                         </div>
                     </div>
+
+                    {displayedItems.length === 0 ?
+                        (<p className='fw-bold fs-5 text-white d-flex mx-4'>⚠️ Nessun elemento trovato. Riprova!</p>) :
+                        (<p className='fw-bold fs-5 text-white d-flex mx-4'>Risultati ({displayedItems.length})</p>)}
+
                     <div className="row d-flex justify-content-center flex-wrap">
+
                         {displayedItems.map(item => (
+
                             <div className="card m-3" style={{ width: "18rem" }} key={item.id}>
                                 <img src={item.image_url} className="card-img-top" alt={item.title} />
                                 <div className="card-body">
@@ -115,15 +141,40 @@ function Show() {
                                     <div className="d-flex align-items-center mb-3 justify-content-between">
                                         <p className="fw-bold mb-0">€ {item.price}</p>
                                     </div>
-                                    <Link to={`/ProductDetail/${item.id}`}>
-                                        <button className="btn btn-dark">Dettagli</button>
-                                    </Link>
+                                    <div className='d-flex justify-content-between'>
+                                        <Link to={`/ProductDetail/${item.id}`}>
+                                            <button className="btn btn-dark">Dettagli</button>
+                                        </Link>
+                                        {/*btn delete and modify*/}
+                                        {/* <div className="d-flex">
+                                            <button className="btn btn-dark me-1">
+                                                <i className="bi bi-pencil-fill text-white"></i>
+                                            </button>
+                                            <button className="btn btn-danger">
+                                                <i className="bi bi-trash-fill text-white"></i>
+                                            </button>
+                                        </div>*/}
+                                    </div>
                                 </div>
                             </div>
                         ))}
+                        <div className="card m-3" style={{ width: "18rem" }}>
+
+                            <div className="card-body d-flex justify-content-center align-items-center">
+                                <button className="btn btn-dark" onClick={() => setShowModal(true)}>
+                                    Aggiungi Prodotto
+                                    <i className="bi bi-plus-circle-fill mx-2"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <FormAddCard
+                show={showModal}
+                onClose={() => setShowModal(false)}
+                onSubmit={handleSubmitProduct}
+            />
         </>
     )
 };
