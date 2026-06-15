@@ -21,7 +21,7 @@ function ProductDetail() {
                 <div className="container my-4">
                     <div className="d-flex justify-content-end mb-4">
                         <Link to="/Show" className="linkbtn btn btn-warning">
-                            ← Torna ai prodotti
+                            ← Torna al Menù
                         </Link>
                     </div>
 
@@ -54,7 +54,7 @@ function ProductDetail() {
                                         className="btn btn-warning mt-3 w-100"
                                         disabled={!product.availability}
                                     >
-                                        {product.availability ? 'Acquista' : 'Non disponibile'}
+                                        {product.availability ? "Aggiungi all'ordine" : "Non disponibile"}
                                     </button>
                                 </div>
                             </div>

@@ -46,7 +46,7 @@ function Structure() {
                 <button className="btn btn-sm btn-dark text-white">Home</button>
               </Link>
               <Link to="/Show">
-                <button className="btn btn-sm btn-dark text-white">Prodotti</button>
+                <button className="btn btn-sm btn-dark text-white">Menù</button>
               </Link>
               <Link to="/WhoWeAre">
                 <button className="btn btn-sm btn-dark text-white">Chi Siamo</button>

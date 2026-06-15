@@ -190,6 +190,13 @@ footer {
   border-color: rgba(238, 236, 236, 0.935);
 }
 
+/* FindItUseful Component*/
+
+/* btn quando utente mette like*/
+.btn-liked {
+  color: #ec307d;
+}
+
 .selectcategories {
   display: flex;
   flex-direction: row;
