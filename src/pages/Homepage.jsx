@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import slogan from '../img/slogan.png';
+import heroBanner from '../img/bannerhome.png';
 import api from '../services/api';
+
 
 function Homepage() {
     const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -27,9 +29,10 @@ function Homepage() {
         <>
             <div className='hero-section'>
                 <img className='slogan' src={slogan} alt="" />
+                <img className='hero-banner' src={heroBanner} alt="iScream banner" />
 
                 <div className="featured-section fade-in-content">
-                    <h2 className="text-center mb-4 text-white">Gelati in Evidenza</h2>
+                    <h2 className="text-center mb-4 text-white">Ultime Proposte</h2>
 
                     {loading && <p className="text-center text-white">Caricamento...</p>}
                     {error && <p className="text-center text-white">Errore: {error}</p>}

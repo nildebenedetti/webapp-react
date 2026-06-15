@@ -65,7 +65,7 @@ footer {
 /*Homepage*/
 
 .hero-section {
-  background-image: url('./img/jumbotron.png');
+  background-image: url('./img/homebg2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -80,9 +80,9 @@ footer {
 
 .slogan {
   position: absolute;
-  top: -1rem;
-  left: 30%;
-  width: 26%;
+  top: 1.6rem;
+  left: 49%;
+  width: 24%;
   transform: translateX(-50%) rotate(-8deg);
   z-index: 2;
 }
@@ -214,8 +214,9 @@ footer {
 
 /* Sezione prodotti in evidenza - homepage */
 .featured-section {
-  width: 100%;
-  padding: 5rem 1rem 2rem;
+  position: relative;
+  z-index: 1;
+  margin-top: -16.4rem; /* valore di partenza, da aggiustare */
 }
 
 .featured-card {
@@ -307,4 +308,13 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* Hero banner homepage */
+.hero-banner {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 1%;
 }
