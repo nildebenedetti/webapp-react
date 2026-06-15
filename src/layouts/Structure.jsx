@@ -63,38 +63,64 @@ function Structure() {
       </main >
 
       <footer className="bg-warning custom-footer px-4 py-4 mt-auto border-top">
-        <div className="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+  <div className="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
 
+    <a className="navbar-brand d-flex align-items-center gap-3 text-decoration-none text-dark" href="/">
+      <div className="brand-text">
+        <img style={{ width: '200px', borderRadius: '50px' }} src={bella} alt="Logo BB" />
+      </div>
+    </a>
 
-          <a className="navbar-brand d-flex align-items-center gap-3 text-decoration-none text-dark" href="/">
-            <div className="brand-text">
-              <img style={{ width: '200px', borderRadius: '50px' }} src={bella} alt="Logo BB" />
-            </div>
-          </a>
+    <ul className="nav align-items-center gap-3 flex-wrap justify-content-center">
+      <li className="nav-item">
+        <Link to="/privacy" className="text-decoration-none text-secondary fw-medium small px-2">
+          Privacy Policy
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/WhoWeAre" className="text-decoration-none text-secondary fw-medium small px-2">
+          Who We Are
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/terms" className="text-decoration-none text-secondary fw-medium small px-2">
+          Terms of Service
+        </Link>
+      </li>
+      <li className="nav-item d-flex align-items-center gap-1 text-secondary fw-medium small px-2">
+        <i className="bi bi-globe2 text-secondary"></i>
+        <span>Florence, Italy</span>
+      </li>
+    </ul>
 
-          <ul className="nav align-items-center gap-3 flex-wrap justify-content-center">
-            <li className="nav-item">
-              <Link to="/privacy" className="text-decoration-none text-secondary fw-medium small px-2">
-                Privacy Policy
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/terms" className="text-decoration-none text-secondary fw-medium small px-2">
-                Terms of Service
-              </Link>
-            </li>
-            <li className="nav-item d-flex align-items-center gap-1 text-secondary fw-medium small px-2">
-              <i className="bi bi-globe2 text-secondary"></i>
-              <span>Florence, Italy</span>
-            </li>
-          </ul>
+    <div className="text-secondary small">
+      <span>© {new Date().getFullYear()} iScream.</span>
+    </div>
 
-          <div className="text-secondary small">
-            <span>© {new Date().getFullYear()} iScream.</span>
-          </div>
+  </div>
 
-        </div>
-      </footer>
+  <div className="d-flex flex-column align-items-center mt-3">
+    <span className="text-dark fw-bold mb-2">Follow us</span>
+    <div className="d-flex gap-3">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-dark fs-4">
+        <i className="bi bi-facebook"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-dark fs-4">
+        <i className="bi bi-instagram"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-dark fs-4">
+        <i className="bi bi-twitter-x"></i>
+      </a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-dark fs-4">
+        <i className="bi bi-tiktok"></i>
+      </a>
+      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-dark fs-4">
+        <i className="bi bi-youtube"></i>
+      </a>
+    </div>
+  </div>
+
+</footer>
     </>
   );
 };
