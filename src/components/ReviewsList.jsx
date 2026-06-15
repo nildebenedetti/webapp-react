@@ -230,7 +230,6 @@ function ReviewsList({ productId }) {
                                             : "persona l'ha trovata utile"}</p>
                                         
                                     </div>
-                                       
                                 </div>
 
                             </div>
