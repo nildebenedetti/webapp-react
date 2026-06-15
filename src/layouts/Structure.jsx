@@ -79,7 +79,7 @@ function Structure() {
       </li>
       <li className="nav-item">
         <Link to="/WhoWeAre" className="text-decoration-none text-secondary fw-medium small px-2">
-          Who We Are
+          About Us
         </Link>
       </li>
       <li className="nav-item">
