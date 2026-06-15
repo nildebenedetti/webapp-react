@@ -4,6 +4,7 @@ import { DataContext } from '../context/DataContext';
 import { useContext } from 'react';
 import { useState } from 'react';
 import api from '../services/api';
+import FormAddCard from '../components/FormAddCard'
 
 function Show() {
     const { items, loading, initialLoad, error, fetchItems } = useContext(DataContext)
@@ -14,6 +15,9 @@ function Show() {
     const toggleTheme = () => {
         setNewTheme(!newTheme)
     }
+
+    //show modal form
+    const [showModal, setShowModal] = useState(false)
 
     //useState per ricerca
     const [research, setResearch] = useState('')
@@ -50,6 +54,11 @@ function Show() {
         </div>
     );
     if (error) return <Navigate to='/NotFound' />
+
+    //btn form
+    const handleSubmitProduct = (e) => {
+        e.preventDefault();
+    }
 
     return (
 
@@ -115,15 +124,39 @@ function Show() {
                                     <div className="d-flex align-items-center mb-3 justify-content-between">
                                         <p className="fw-bold mb-0">€ {item.price}</p>
                                     </div>
-                                    <Link to={`/ProductDetail/${item.id}`}>
-                                        <button className="btn btn-dark">Dettagli</button>
-                                    </Link>
+                                    <div className='d-flex justify-content-between'>
+                                        <Link to={`/ProductDetail/${item.id}`}>
+                                            <button className="btn btn-dark">Dettagli</button>
+                                        </Link>
+                                       {/* <div className="d-flex">
+                                            <button className="btn btn-dark me-1">
+                                                <i className="bi bi-pencil-fill text-white"></i>
+                                            </button>
+                                            <button className="btn btn-danger">
+                                                <i className="bi bi-trash-fill text-white"></i>
+                                            </button>
+                                        </div>*/}
+                                    </div>
                                 </div>
                             </div>
                         ))}
+                        <div className="card m-3" style={{ width: "18rem" }}>
+                             
+                            <div className="card-body d-flex justify-content-center align-items-center">
+                                <button className="btn btn-dark" onClick={() => setShowModal(true)}>
+                                    Aggiungi Prodotto
+                                    <i className="bi bi-plus-circle-fill mx-2"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <FormAddCard
+                show={showModal}
+                onClose={() => setShowModal(false)}
+                onSubmit={handleSubmitProduct}
+            />
         </>
     )
 };
