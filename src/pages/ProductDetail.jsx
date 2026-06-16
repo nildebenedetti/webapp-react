@@ -19,7 +19,7 @@ function ProductDetail() {
         <>
             <div className='hero-detail'>
                 <div className="container my-4">
-                    <div className="d-flex justify-content-end mb-4">
+                    <div className="d-flex mb-4">
                         <Link to="/Show" className="linkbtn btn btn-warning">
                             ← Torna al Menù
                         </Link>
