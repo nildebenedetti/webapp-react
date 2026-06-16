@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import api from "../services/api";
-import ReviewForm from "./RewiewForm";
-import { formatDate } from "../utils/fucntions.js";
-import FindItUseful from "./FindItUseful.jsx";
+import ReviewForm from "./ReviewForm.jsx";
+import ReviewCard from "./ReviewCard.jsx";
 
 function ReviewsList({ productId }) {
     const [reviews, setReviews] = useState([]);
@@ -211,42 +210,10 @@ function ReviewsList({ productId }) {
                         </p>
                     ) : (
                         visibleReviews.map(review => (
-                            <div
-                                className="card review-card mb-3"
+                            <ReviewCard
                                 key={review.id}
-                            >
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        {review.title}
-                                    </h5>
-                                    <p className="rating-star">
-                                        {"★".repeat(
-                                            Number(
-                                                review.start_rating
-                                            )
-                                        )}
-                                        {"☆".repeat(
-                                            5 -
-                                            Number(
-                                                review.start_rating
-                                            )
-                                        )}
-                                    </p>
-                                    <p>{review.body}</p>
-                                    <p className="mb-0">
-                                        <strong>
-                                            {review.author_name}
-                                        </strong>
-                                    </p>
-                                    <div className="d-flex justify-content-between py-2 px-1">
-                                        <FindItUseful reviewLikes={review.find_it_useful}/>
-                                    <div>
-                                        <p className="date-text small fst-italic text-black-50 py-1 m">Pubblicato il {formatDate(review.submission_date)}</p>
-                                    </div>
-                                    
-                                    </div>
-                                </div>
-                            </div>
+                                review={review}
+                            />
                         ))
                     )}
                     {totalPages > 1 && (
@@ -257,7 +224,7 @@ function ReviewsList({ productId }) {
                                 onClick={() =>
                                     setCurrentPage(
                                         previousPage =>
-                                            previousPage - 1
+                                        previousPage - 1
                                     )
                                 }
                             >
@@ -275,7 +242,7 @@ function ReviewsList({ productId }) {
                                 onClick={() =>
                                     setCurrentPage(
                                         previousPage =>
-                                            previousPage + 1
+                                        previousPage + 1
                                     )
                                 }
                             >
