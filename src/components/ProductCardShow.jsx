@@ -8,7 +8,7 @@ function ProductCardShow({ item }) {
     return <div className="card product-card m-3" style={{ width: "18rem" }}>
         <button
             type="button"
-            className="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle"
+            className="btn btn-black-50 position-absolute top-0 end-0 m-2 rounded-circle"
             onClick={() => toggleWishlist(item)}
         >
             {isInWishlist(item.id) ? (
