@@ -374,7 +374,8 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-=======
+}
+
 /* Newsletter Modal */
 .newsletter-overlay {
   position: fixed;
