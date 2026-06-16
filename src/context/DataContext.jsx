@@ -15,6 +15,7 @@ function DataProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [initialLoad, setInitialLoad] = useState(true);
+    const [wishlistItems, setWishlistItems] = useState([]);
 
 
     const fetchItems = async (categoryId = null) => {
@@ -38,70 +39,90 @@ function DataProvider({ children }) {
         } catch (error) {
             setError(error.message);
         } finally {
-        setLoading(false);
-        setInitialLoad(false);
-    }
+            setLoading(false);
+            setInitialLoad(false);
+        }
     };
 
     useEffect(() => {
         fetchItems();
     }, []);
 
-        // Funzioni CRUD (Create, Update, Delete).
+    // Funzioni CRUD (Create, Update, Delete).
 
-        // CREATE
-        const createItem = async (payload) => {
-            const res = await fetch(PRODUCTS_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
-            const newItem = await res.json();
+    // CREATE
+    const createItem = async (payload) => {
+        const res = await fetch(PRODUCTS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        const newItem = await res.json();
 
-            setItems(prev => [...prev, newItem]);
+        setItems(prev => [...prev, newItem]);
 
-            return newItem;
-        };
+        return newItem;
+    };
 
-        // UPDATE
-        const updateItem = async (id, payload) => {
-            const res = await fetch(`${PRODUCTS_URL}/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
-            const updated = await res.json();
+    // UPDATE
+    const updateItem = async (id, payload) => {
+        const res = await fetch(`${PRODUCTS_URL}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        const updated = await res.json();
 
-            setItems(prev => prev.map(i => i.id === id ? updated : i));
+        setItems(prev => prev.map(i => i.id === id ? updated : i));
 
-            return updated;
-        };
+        return updated;
+    };
 
-        // DELETE
-        const deleteItem = async (id) => {
-            await fetch(`${PRODUCTS_URL}/${id}`, { method: 'DELETE' });
+    // DELETE
+    const deleteItem = async (id) => {
+        await fetch(`${PRODUCTS_URL}/${id}`, { method: 'DELETE' });
 
-            setItems(prev => prev.filter(i => i.id !== id));
-        };
+        setItems(prev => prev.filter(i => i.id !== id));
+    };
 
+    //WISHLIST
+    const toggleWishlist = (product) => {
+        setWishlistItems(previousItems => {
+            const productAlreadyExists = previousItems.some(
+                item => item.id === product.id
+            );
 
+            if (productAlreadyExists) {
+                return previousItems.filter(item => item.id !== product.id);
+            }
 
-        const value = {
-            items,
-            loading,
-            initialLoad,
-            error,
-            fetchItems,
-            createItem,
-            updateItem,
-            deleteItem,
-        };
+            return [...previousItems, product];
+        });
+    };
 
-        return (
-            <DataContext value={value}>
-                {children}
-            </DataContext>
-        );
-    }
+    const isInWishlist = (productId) => {
+        return wishlistItems.some(item => item.id === productId);
+    };
 
-    export { DataContext, DataProvider };
+    const value = {
+        items,
+        loading,
+        initialLoad,
+        error,
+        fetchItems,
+        createItem,
+        updateItem,
+        deleteItem,
+        wishlistItems,
+        toggleWishlist,
+        isInWishlist,
+    };
+
+    return (
+        <DataContext value={value}>
+            {children}
+        </DataContext>
+    );
+}
+
+export { DataContext, DataProvider };
